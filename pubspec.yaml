@@ -38,6 +38,7 @@ dependencies:
   get:
   font_awesome_flutter:
   cached_network_image:
+  google_fonts:
 
 dev_dependencies:
   flutter_test:
