@@ -1,10 +1,11 @@
 import 'package:books/features/home/presentation/views/home_view.dart';
-import 'package:books/features/splash/presentation/widgets/sliding_text.dart';
+import 'package:books/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../constants.dart';
-import '../../../../core/utils/assets.dart';
+import '../../../../../constants.dart';
+import '../../../../../core/utils/assets.dart';
+
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
