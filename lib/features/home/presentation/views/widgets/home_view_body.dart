@@ -1,9 +1,8 @@
 import 'package:books/core/utils/styles.dart';
 import 'package:books/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'best_seller_item.dart';
+import 'best_seller_list_view.dart';
 import 'books_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -11,33 +10,41 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          CustomAppbar(),
-          BooksListView(),
-          SizedBox(
-            height: 50,
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                ),
+                child: CustomAppbar(),
+              ),
+              BooksListView(),
+              SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 30.0,
+                ),
+                child: Text(
+                  'Best Seller',
+                  style: Styles.textStyle18,
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+            ],
           ),
-          Text(
-            'Best Seller',
-            style: Styles.textStyle18,
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          BestSellerItem(
-            url:
-                'https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg',
-          ),
-        ],
-      ),
+        ),
+        const SliverFillRemaining(
+          child: BestSellerListView(),
+        ),
+      ],
     );
   }
 }
-
-
