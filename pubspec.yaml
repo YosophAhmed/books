@@ -39,6 +39,8 @@ dependencies:
   cached_network_image:
   google_fonts:
   go_router:
+  dartz:
+  dio:
 
 dev_dependencies:
   flutter_test:
