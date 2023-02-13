@@ -1,10 +1,19 @@
 class BookModel {
+  String? kind;
+  String? id;
+  String? etag;
+  String? selfLink;
+  late VolumeInfo volumeInfo;
+  SaleInfo? saleInfo;
+  AccessInfo? accessInfo;
+  SearchInfo? searchInfo;
+
   BookModel({
     this.kind,
     this.id,
     this.etag,
     this.selfLink,
-    this.volumeInfo,
+    required this.volumeInfo,
     this.saleInfo,
     this.accessInfo,
     this.searchInfo,
@@ -15,9 +24,7 @@ class BookModel {
     id = json['id'];
     etag = json['etag'];
     selfLink = json['selfLink'];
-    volumeInfo = json['volumeInfo'] != null
-        ? VolumeInfo.fromJson(json['volumeInfo'])
-        : null;
+    volumeInfo = VolumeInfo.fromJson(json['volumeInfo']);
     saleInfo =
         json['saleInfo'] != null ? SaleInfo.fromJson(json['saleInfo']) : null;
     accessInfo = json['accessInfo'] != null
@@ -27,14 +34,6 @@ class BookModel {
         ? SearchInfo.fromJson(json['searchInfo'])
         : null;
   }
-  String? kind;
-  String? id;
-  String? etag;
-  String? selfLink;
-  VolumeInfo? volumeInfo;
-  SaleInfo? saleInfo;
-  AccessInfo? accessInfo;
-  SearchInfo? searchInfo;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -42,9 +41,7 @@ class BookModel {
     map['id'] = id;
     map['etag'] = etag;
     map['selfLink'] = selfLink;
-    if (volumeInfo != null) {
-      map['volumeInfo'] = volumeInfo?.toJson();
-    }
+    map['volumeInfo'] = volumeInfo.toJson();
     if (saleInfo != null) {
       map['saleInfo'] = saleInfo?.toJson();
     }
@@ -196,6 +193,28 @@ class SaleInfo {
 }
 
 class VolumeInfo {
+  String? title;
+  List<String>? authors;
+  String? publisher;
+  String? publishedDate;
+  String? description;
+  List<IndustryIdentifiers>? industryIdentifiers;
+  ReadingModes? readingModes;
+  int? pageCount;
+  String? printType;
+  List<String>? categories;
+  int? averageRating;
+  int? ratingsCount;
+  String? maturityRating;
+  bool? allowAnonLogging;
+  String? contentVersion;
+  PanelizationSummary? panelizationSummary;
+  late ImageLinks imageLinks;
+  String? language;
+  String? previewLink;
+  String? infoLink;
+  String? canonicalVolumeLink;
+
   VolumeInfo({
     this.title,
     this.authors,
@@ -213,7 +232,7 @@ class VolumeInfo {
     this.allowAnonLogging,
     this.contentVersion,
     this.panelizationSummary,
-    this.imageLinks,
+    required this.imageLinks,
     this.language,
     this.previewLink,
     this.infoLink,
@@ -247,35 +266,13 @@ class VolumeInfo {
     panelizationSummary = json['panelizationSummary'] != null
         ? PanelizationSummary.fromJson(json['panelizationSummary'])
         : null;
-    imageLinks = json['imageLinks'] != null
-        ? ImageLinks.fromJson(json['imageLinks'])
-        : null;
+    imageLinks = ImageLinks.fromJson(json['imageLinks']);
     language = json['language'];
     previewLink = json['previewLink'];
     infoLink = json['infoLink'];
     canonicalVolumeLink = json['canonicalVolumeLink'];
   }
-  String? title;
-  List<String>? authors;
-  String? publisher;
-  String? publishedDate;
-  String? description;
-  List<IndustryIdentifiers>? industryIdentifiers;
-  ReadingModes? readingModes;
-  int? pageCount;
-  String? printType;
-  List<String>? categories;
-  int? averageRating;
-  int? ratingsCount;
-  String? maturityRating;
-  bool? allowAnonLogging;
-  String? contentVersion;
-  PanelizationSummary? panelizationSummary;
-  ImageLinks? imageLinks;
-  String? language;
-  String? previewLink;
-  String? infoLink;
-  String? canonicalVolumeLink;
+
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -302,9 +299,7 @@ class VolumeInfo {
     if (panelizationSummary != null) {
       map['panelizationSummary'] = panelizationSummary?.toJson();
     }
-    if (imageLinks != null) {
-      map['imageLinks'] = imageLinks?.toJson();
-    }
+    map['imageLinks'] = imageLinks.toJson();
     map['language'] = language;
     map['previewLink'] = previewLink;
     map['infoLink'] = infoLink;
@@ -314,17 +309,19 @@ class VolumeInfo {
 }
 
 class ImageLinks {
+  late String smallThumbnail;
+  late String thumbnail;
+
   ImageLinks({
-    this.smallThumbnail,
-    this.thumbnail,
+    required this.smallThumbnail,
+    required this.thumbnail,
   });
 
   ImageLinks.fromJson(dynamic json) {
     smallThumbnail = json['smallThumbnail'];
     thumbnail = json['thumbnail'];
   }
-  String? smallThumbnail;
-  String? thumbnail;
+
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
