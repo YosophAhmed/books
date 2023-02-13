@@ -6,7 +6,7 @@ import 'best_seller_list_view.dart';
 import 'books_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({Key? key}) : super(key: key);
+  const  HomeViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
