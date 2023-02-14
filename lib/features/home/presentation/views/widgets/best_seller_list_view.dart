@@ -1,4 +1,9 @@
+import 'package:books/core/widgets/custom_error_widget.dart';
+import 'package:books/core/widgets/custom_loading_indicator.dart';
+import 'package:books/features/home/presentation/manger/newest_books_cubit/newest_books_cubit.dart';
+import 'package:books/features/home/presentation/manger/newest_books_cubit/newest_books_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'best_seller_item.dart';
 
@@ -7,23 +12,35 @@ class BestSellerListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 30.0,
-      ),
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: 10,
-        itemBuilder: (context, index) => const Padding(
-          padding: EdgeInsets.only(
-            bottom: 20.0,
-          ),
-          child: BestSellerItem(
-            url: '',
-          ),
-        ),
-      ),
+    return BlocBuilder<NewestBooksCubit, NewestBooksState>(
+      builder: (context, state) {
+        if (state is NewestBooksSuccess) {
+          return Padding(
+            padding: const EdgeInsets.only(
+              left: 30.0,
+            ),
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: state.books.length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 20.0,
+                ),
+                child: BestSellerItem(
+                  bookModel: state.books[index],
+                ),
+              ),
+            ),
+          );
+        } else if (state is NewestBooksError) {
+          return CustomErrorWidget(
+            errorMessage: state.errorMessage,
+          );
+        } else {
+          return const CustomLoadingIndicator();
+        }
+      },
     );
   }
 }

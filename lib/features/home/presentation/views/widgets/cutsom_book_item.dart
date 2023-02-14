@@ -1,3 +1,4 @@
+import 'package:books/core/widgets/custom_loading_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class CustomBookItem extends StatelessWidget {
         child: CachedNetworkImage(
           fit: BoxFit.fill,
           imageUrl: url,
+          placeholder: (context, url) => const CustomLoadingIndicator(),
           errorWidget: (
               context,
               url,

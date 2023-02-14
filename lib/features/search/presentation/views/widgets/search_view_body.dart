@@ -41,9 +41,9 @@ class SearchListView extends StatelessWidget {
         padding: EdgeInsets.only(
           bottom: 20.0,
         ),
-        child: BestSellerItem(
-          url: '',
-        ),
+        // child: BestSellerItem(
+        //   url: '',
+        // ),
       ),
     );
   }
