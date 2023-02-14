@@ -1,9 +1,11 @@
+import 'package:books/core/utils/app_router.dart';
 import 'package:books/core/widgets/custom_error_widget.dart';
 import 'package:books/core/widgets/custom_loading_indicator.dart';
 import 'package:books/features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:books/features/home/presentation/manger/featured_books_cubit/featured_books_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'cutsom_book_item.dart';
 
@@ -21,13 +23,20 @@ class BooksListView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: state.books.length,
-              itemBuilder: (context, index) =>  Padding(
+              itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 8.0,
                 ),
-                child: CustomBookItem(
-                  url:
-                      state.books[index].volumeInfo.imageLinks.thumbnail,
+                child: GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(
+                      AppRouter.kBookDetailsView,
+                      extra: state.books[index],
+                    );
+                  },
+                  child: CustomBookItem(
+                    url: state.books[index].volumeInfo.imageLinks.thumbnail,
+                  ),
                 ),
               ),
             ),

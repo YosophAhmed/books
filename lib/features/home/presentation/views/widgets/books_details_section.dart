@@ -1,3 +1,4 @@
+import 'package:books/features/home/data/models/BookModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -6,7 +7,10 @@ import 'books_action_button.dart';
 import 'cutsom_book_item.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({Key? key}) : super(key: key);
+
+  final BookModel bookModel;
+
+  const BookDetailsSection({Key? key, required this.bookModel,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +22,17 @@ class BookDetailsSection extends StatelessWidget {
             horizontal: width / 5,
             vertical: 20,
           ),
-          child: const CustomBookItem(
+          child: CustomBookItem(
             url:
-            'https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg',
+            bookModel.volumeInfo.imageLinks.thumbnail,
           ),
         ),
         Text(
-          'The jungle book',
+          bookModel.volumeInfo.title!,
           style: Styles.textStyle30.copyWith(
             fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: 6,
@@ -35,7 +40,7 @@ class BookDetailsSection extends StatelessWidget {
         Opacity(
           opacity: 0.7,
           child: Text(
-            'Rudyard Clipping',
+            bookModel.volumeInfo.authors![0],
             style: Styles.textStyle18.copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w500,
@@ -47,8 +52,8 @@ class BookDetailsSection extends StatelessWidget {
         ),
         BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
-          rating: 4,
-          count: 250,
+          rating: bookModel.volumeInfo.averageRating ?? 0,
+          count: bookModel.volumeInfo.ratingsCount ?? 0,
         ),
         const SizedBox(
           height: 15,
