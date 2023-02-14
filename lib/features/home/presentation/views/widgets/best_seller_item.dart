@@ -19,8 +19,10 @@ class BestSellerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+
         GoRouter.of(context).push(
           AppRouter.kBookDetailsView,
+          extra: bookModel,
         );
       },
       child: SizedBox(
@@ -83,7 +85,7 @@ class BestSellerItem extends StatelessWidget {
                         ),
                       ),
                       BookRating(
-                        rating: bookModel.volumeInfo.averageRating ?? 0,
+                        rating: bookModel.volumeInfo.averageRating?.round() ?? 0,
                         count: bookModel.volumeInfo.ratingsCount ?? 0,
                       ),
                     ],
