@@ -6,7 +6,7 @@ import 'best_seller_list_view.dart';
 import 'books_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const  HomeViewBody({Key? key}) : super(key: key);
+  const HomeViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +17,25 @@ class HomeViewBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
+              SizedBox(
+                height: 30,
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
+                  horizontal: 16.0,
                 ),
                 child: CustomAppbar(),
               ),
+              SizedBox(
+                height: 15,
+              ),
               BooksListView(),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: 30.0,
+                  left: 16.0,
                 ),
                 child: Text(
                   'Best Seller',
@@ -37,7 +43,7 @@ class HomeViewBody extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 25,
+                height: 30,
               ),
             ],
           ),

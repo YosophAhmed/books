@@ -20,12 +20,13 @@ class BooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height / 3,
             child: ListView.builder(
+              padding: EdgeInsets.zero,
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: state.books.length,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
+                  horizontal: 6.0,
                 ),
                 child: GestureDetector(
                   onTap: () {

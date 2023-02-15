@@ -20,7 +20,7 @@ class BookDetailsSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: width / 5,
-            vertical: 20,
+            vertical: 10,
           ),
           child: CustomBookItem(
             url:
@@ -35,7 +35,7 @@ class BookDetailsSection extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(
-          height: 6,
+          height: 5,
         ),
         Opacity(
           opacity: 0.7,
@@ -48,7 +48,7 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 16,
+          height: 5,
         ),
         BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +56,7 @@ class BookDetailsSection extends StatelessWidget {
           count: bookModel.volumeInfo.ratingsCount ?? 0,
         ),
         const SizedBox(
-          height: 15,
+          height: 10,
         ),
         const BooksActionButton(),
       ],

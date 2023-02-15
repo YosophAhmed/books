@@ -17,7 +17,8 @@ class BestSellerListView extends StatelessWidget {
         if (state is NewestBooksSuccess) {
           return Padding(
             padding: const EdgeInsets.only(
-              left: 30.0,
+              left: 16.0,
+              right: 16.0,
             ),
             child: ListView.builder(
               padding: EdgeInsets.zero,

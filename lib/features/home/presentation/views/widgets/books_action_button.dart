@@ -9,7 +9,7 @@ class BooksActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 8.0,
+        horizontal: 48.0,
       ),
       child: Row(
         children: const [

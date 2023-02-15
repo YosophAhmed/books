@@ -8,30 +8,25 @@ class CustomAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 40,
-      ),
-      child: Row(
-        children: [
-          const Text(
-            'Books',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
+    return Row(
+      children: [
+        const Text(
+          'Books',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
           ),
-          const Spacer(),
-          IconButton(
-            onPressed: () {
-              GoRouter.of(context).push(AppRouter.kSearchView);
-            },
-            icon: const Icon(
-              FontAwesomeIcons.magnifyingGlass,
-            ),
+        ),
+        const Spacer(),
+        IconButton(
+          onPressed: () {
+            GoRouter.of(context).push(AppRouter.kSearchView);
+          },
+          icon: const Icon(
+            FontAwesomeIcons.magnifyingGlass,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
